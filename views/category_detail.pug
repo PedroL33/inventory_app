@@ -1,0 +1,26 @@
+extends layout 
+
+block content
+  div.description
+    h2 #{title}
+    p #[strong Description: ] #{category.description}
+
+  div.related
+    h3 #[strong #{title} items: ] 
+    for item in item_list
+      div.item
+        p #[strong Name: ] 
+          a(href=item.url) #{item.name}
+        p #[strong Description: ] #{item.description}
+        p #[strong Price: ] $#{item.price}
+        p #[strong Stock: ] #{item.stock}
+        
+  div.button
+    a(href=category.url+'/delete') Delete
+    i.fas.fa-trash
+  div.button
+    a(ref=category.url+'/update') Update
+    i.far.fa-edit
+
+
+  

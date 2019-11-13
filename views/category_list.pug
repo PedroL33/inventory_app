@@ -1,0 +1,9 @@
+extends layout
+block content
+    h2 #{title}
+
+    ul
+        for category in category_list
+            li.category
+                a(href=category.url) #{category.name}&nbsp;
+                span - #{category.description}

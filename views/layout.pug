@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://kit.fontawesome.com/9d2da4d6cd.js" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap", rel="stylesheet") 
+  body
+    h1#logo Inventory App
+    div#content
+      div#sidebar
+        div.links
+          ul
+            li 
+              a(href='/catalog/categories') Categories
+            li 
+              a(href='/catalog/items') Items
+        div.button
+          a(href='/catalog/category/create') Create Category &nbsp;
+            i.fas.fa-plus
+        div.button
+          a(href='/catalog/item/create') Create Item &nbsp;
+            i.fas.fa-plus
+      div#main
+        block content

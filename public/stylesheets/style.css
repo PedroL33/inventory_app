@@ -1,0 +1,114 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin:0;
+  padding: 0;
+  border:0;
+  font-family: 'Jomolhari', serif;
+}
+
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+
+#content {
+  display: flex;
+}
+
+#main {
+  width:40%;
+}
+
+ul {
+  list-style-type: none;
+  padding:0;
+}
+
+#logo {
+  width:100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid black;
+}
+
+#sidebar {
+  width: 20%;
+}
+
+button {
+  background-color: dodgerblue;
+  padding: .3em 1.2em;
+  border-radius: 2em;
+  margin:0 0.3em 0.3em 0;
+  background-color:#4eb5f1;
+  color: white;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #00B7FF;
+  cursor: pointer;
+}
+
+.submit {
+  margin: auto;
+}
+
+form {
+  display:flex; 
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto;
+  width: 65%;
+}
+
+form div {
+  margin: 10px;
+}
+
+.item, .category{
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.description {
+  padding: 20px;
+}
+
+.list_item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+i {
+  color: white;
+}
+
+.button {
+  background-color: #4eb5f1;
+  margin: 20px;
+  padding: 10px 0px;
+  text-align: center;
+  width: 150px;
+  border-radius: 20px;
+}
+
+.button a {
+  color:white;
+}
+
+.links {
+  padding-bottom: 50px;
+  text-align: center;
+}

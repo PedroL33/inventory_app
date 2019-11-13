@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+  h2 #{title}
+
+  if item_list.length
+    p #[strong Delete related items before deleting #{category.name}]
+    h3 Related Items: 
+    ul
+      for item in item_list
+        li
+          a(href=item.url) #{item.name}
+  else 
+    p #[strong Are you sure you want to delete #{category.name}? ]
+
+    form(method='POST', action='')
+      input(type='hidden', value=category.id, required=true, name='id')
+      button(type='submit') Delete

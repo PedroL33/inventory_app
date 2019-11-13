@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  h2 #{title}
+ 
+  div
+    p #[strong Description: ] #{item.description}
+    p #[strong Category: ] 
+      a(href=item.category.url) #{item.category.name}
+    p #[strong  Price: ] $#{item.price.toFixed(2)}
+    p #[strong Stock: ] #{item.stock}
+  
+  div.button
+    a(href='/catalog/item/'+item.id+'/update') Update 
+      i.far.fa-edit
+  div.button
+    a(href='/catalog/item/'+item.id+'/Delete') Delete 
+      i.fas.fa-trash
+
+  

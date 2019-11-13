@@ -1,0 +1,11 @@
+extend layout
+
+block content
+
+  h2 #{title}
+  
+  p #[span Are you sure you want to delete] #[a(href='/catalog/item/'+item.id) #{item.name}]#[span ?]
+
+  form(method='POST', action='') 
+    input(type='hidden',name='itemid', required='true', value=item.id) 
+    button(type='submit') Delete
