@@ -1,7 +1,4 @@
 #! /usr/bin/env node
-
-console.log('This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true');
-
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
 /*
@@ -10,9 +7,11 @@ if (!userArgs[0].startsWith('mongodb')) {
     return
 }
 */
-var async = require('async')
-var Category = require('./models/category')
-var Item = require('./models/item')
+var async = require('async');
+var Category = require('./models/category');
+var Item = require('./models/item');
+var User = require('./models/user');
+var bcrypt = require('bcryptjs')
 
 
 var mongoose = require('mongoose');
@@ -61,6 +60,27 @@ function itemCreate(name, description, category, price, stock, cb) {
   }   );
 }
 
+function createUser(username, password, cb) {
+  userDetail = { 
+    username: username, 
+    password: password
+  };
+  var user = new User(userDetail);
+  bcrypt.hash(user.password, 10, null, function(err, hash) {
+    if (err) 
+      return next(err);
+    user.password = hash;
+    next();
+  });
+  user.save(function (err) {
+    if (err) {
+      cb(err, null);
+      return;
+    }
+    console.log('New user: ' + user);
+    cb(null, user);
+  }   );
+}
 
 
 function createCategories(cb) {
@@ -125,11 +145,16 @@ function createItems(cb) {
         cb);
 }
 
+function createUser(cb) {
+  createUser('peterl33', 'asdf');
+}
+
 
 
 async.series([
     createCategories,
-    createItems
+    createItems, 
+    createUser
 ],
 // Optional callback
 function(err, results) {

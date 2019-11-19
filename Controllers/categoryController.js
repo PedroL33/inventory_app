@@ -24,7 +24,7 @@ exports.category_detail = function(req, res, next) {
     },
     function(err, results) {
         if(err) { return next(err); }
-        res.render('category_detail', {title: results.category.name, category: results.category, item_list: results.item_list});
+        res.render('category_detail', {title: 'Category Details', category: results.category, item_list: results.item_list});
     })
 };
 

@@ -1,26 +1,30 @@
 extends layout 
 
 block content
+  h2 #{title}
   div.description
-    h2 #{title}
+    p #[strong Name: ] #{category.name}
     p #[strong Description: ] #{category.description}
 
   div.related
-    h3 #[strong #{title} items: ] 
-    for item in item_list
-      div.item
-        p #[strong Name: ] 
-          a(href=item.url) #{item.name}
-        p #[strong Description: ] #{item.description}
-        p #[strong Price: ] $#{item.price}
-        p #[strong Stock: ] #{item.stock}
-        
-  div.button
-    a(href=category.url+'/delete') Delete
-    i.fas.fa-trash
-  div.button
-    a(ref=category.url+'/update') Update
-    i.far.fa-edit
+    if item_list.length
+      h3 #[strong #{category.name} items: ] 
+      for item in item_list
+        div.item
+          p #[strong Name: ] 
+            a(href=item.url) #{item.name}
+          p #[strong Description: ] #{item.description}
+          p #[strong Price: ] $#{item.price}
+          p #[strong Stock: ] #{item.stock}
+    else
+      p There are no #{title} items in your inventory.
+  div.button_container  
+    div.button
+      a(href=category.url+'/delete') Delete &nbsp;
+      i.fas.fa-trash
+    div.button
+      a(ref=category.url+'/update') Update &nbsp;
+      i.far.fa-edit
 
 
   

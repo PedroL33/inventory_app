@@ -4,18 +4,18 @@ block content
 
   h2 #{title}
  
-  div
+  div.description
     p #[strong Description: ] #{item.description}
     p #[strong Category: ] 
       a(href=item.category.url) #{item.category.name}
     p #[strong  Price: ] $#{item.price.toFixed(2)}
     p #[strong Stock: ] #{item.stock}
-  
-  div.button
-    a(href='/catalog/item/'+item.id+'/update') Update 
-      i.far.fa-edit
-  div.button
-    a(href='/catalog/item/'+item.id+'/Delete') Delete 
-      i.fas.fa-trash
+  div.button_container
+    div.button
+      a(href='/catalog/item/'+item.id+'/update') Update &nbsp;
+        i.far.fa-edit
+    div.button
+      a(href='/catalog/item/'+item.id+'/Delete') Delete &nbsp;
+        i.fas.fa-trash
 
   

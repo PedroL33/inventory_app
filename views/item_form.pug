@@ -2,13 +2,16 @@ extends layout
 
 block content
   h2 #{title}
+  if errors
+    for error in errors
+      div.error #{error.msg}
   form(method='POST', action='')
     div
       label(for='name') Name: &nbsp;
       input(type='text', placeholder='Name', name='name', value=(undefined===item ? '':item.name), required=true)
     div
       label(for='description') Description: 
-      input(type='textarea', name='description', placeholder='Describe this item', value=(undefined===item ? '':item.description), required=true)
+      textarea(name='description', placeholder='Describe this item', value=(undefined===item ? '':item.description), required=true)
     div
       label(for='stock') Stock: &nbsp;
       input#stock(type='text', name='stock', placeholder='0', value=(undefined===item ? '': item.stock), required=true)
@@ -20,10 +23,8 @@ block content
       select(type='select', name='category' required=true)
         for category in category_list
           option(value=category._id, selected=(undefined===item?false:item.category==category.id? true:false)) #{category.name}
+    div
+      input(type='hidden', name='currentUser', value=currentUser.id, required=true)
     div.submit
-      button(type='submit') Submit)
-  if errors
-    ul
-      for error in errors
-        li #{error.msg}
+      button(type='submit') Submit
       

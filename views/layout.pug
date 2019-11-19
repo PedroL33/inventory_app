@@ -6,20 +6,33 @@ html
     script(src="https://kit.fontawesome.com/9d2da4d6cd.js" crossorigin="anonymous")
     link(href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap", rel="stylesheet") 
   body
-    h1#logo Inventory App
+    h1#logo 
+      a(href='/') Inventory App
     div#content
-      div#sidebar
-        div.links
-          ul
-            li 
-              a(href='/catalog/categories') Categories
-            li 
-              a(href='/catalog/items') Items
-        div.button
-          a(href='/catalog/category/create') Create Category &nbsp;
-            i.fas.fa-plus
-        div.button
-          a(href='/catalog/item/create') Create Item &nbsp;
-            i.fas.fa-plus
       div#main
         block content
+      div#sidebar
+        if currentUser
+          div#welcome Welcome back #{currentUser.username}
+          div.button
+            a(href='/users/logout') Logout
+          div.links
+            ul
+              li 
+                div.button 
+                  a(href='/catalog/categories') Categories
+              li 
+                div.button
+                  a(href='/catalog/items') Items
+          div.button
+            a(href='/catalog/category/create') Create Category &nbsp;
+              i.fas.fa-plus
+          div.button
+            a(href='/catalog/item/create') Create Item &nbsp;
+              i.fas.fa-plus
+        else
+          div#welcome Please log in or create an account.
+          div.button
+            a(href='/users/signup') Signup
+          div.button
+            a(href='/users/login') Login

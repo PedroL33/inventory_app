@@ -2,15 +2,12 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-require('mongoose-currency').loadType(mongoose);
-var Currency = mongoose.Types.Currency;
-
-
 var ItemSchema = new Schema(
     {
         name: {type: String, required: true, max: 20},
         description: {type: String},
         category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
+        user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
         price: {type: Number, required: true},
         stock: {type: Number, required: true}
     }

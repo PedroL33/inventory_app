@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://kit.fontawesome.com/9d2da4d6cd.js" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap", rel="stylesheet") 
+  body
+    h1#logo 
+      a(href='/') Inventory App
+    if error
+      div.error #{error}
+    h2 Please enter your information
+
+    form(action='', method='POST')
+      div
+          label(for='username') Username: 
+          input(type='text', name='signupUsername', placeholder='Username', required=true)
+      div
+          label(for='password') Password:
+          input(type='password', name='signupPassword', placeholder='Password', required=true)
+      div
+          button(type='submit')  Submit

@@ -6,7 +6,7 @@ const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
 exports.item_list = function(req, res, next) {
-    Item.find()
+    Item.find({user: res.locals.currentUser.id})
     .exec(function(err, results) {
         if(err) { return next(err); }
         res.render('item_list', {title: 'Items', item_list: results})
@@ -50,7 +50,8 @@ exports.post_item_create = [
               description: req.body.description, 
               stock: req.body.stock,
               price: req.body.price, 
-              category: req.body.category
+              category: req.body.category,
+              user: req.body.currentUser
             });
 
         if(!errors.isEmpty()) {
@@ -110,6 +111,7 @@ exports.post_item_update = [
                 category: req.body.category,
                 stock: req.body.stock,
                 price: req.body.price,
+                user: req.body.currentUser,
                 _id: req.params.id
             }
         )
